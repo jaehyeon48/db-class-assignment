@@ -1,24 +1,14 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
+import FileInput from './components/FileInput';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="main-page">
+      <h1 className="main-header">201629115 김재현 데이터베이스 과제 사이트</h1>
+      <FileInput />
+    </main>
   );
 }
 

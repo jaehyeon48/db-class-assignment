@@ -1,10 +1,13 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
+import loadingSpinner from '../loading-spinner.gif';
+
 const FileInput = () => {
   const fileInputRef = useRef(null);
   const [applyDragStyle, setApplyDragStyle] = useState(false);
   const [isFileLoaded, setIsFileLoaded] = useState(false);
+  const [isFileUploading, setIsFileUploading] = useState(false);
 
   const handleFileLoadedStatus = (e) => {
     if (fileInputRef.current.files.length > 0) {
@@ -17,6 +20,7 @@ const FileInput = () => {
   }
 
   const handleFileInput = () => {
+    setIsFileUploading(true);
     const reader = new FileReader();
     reader.onload = async () => {
       const inputDataArray = reader.result.split('\n').map((line) => splitData(line));
@@ -35,9 +39,12 @@ const FileInput = () => {
         await axios.post('http://localhost:5000/api/insert/by-file', postBody, config);
         window.alert('데이터가 성공적으로 저장되었습니다!');
         setIsFileLoaded(false);
+        setIsFileUploading(false);
+        fileInputRef.current.value = '';
       } catch (error) {
         console.log(error);
         window.alert('데이터 저장 실패.');
+        setIsFileUploading(false);
       }
     }
     reader.readAsText(fileInputRef.current.files[0]);
@@ -83,21 +90,29 @@ const FileInput = () => {
           ref={fileInputRef}
           onChange={handleFileLoadedStatus}
         />
-        <div className="file-input-btns">
-          <button
-            type="button"
-            className="choose-file-btn"
-            onClick={handleOpenFileSelect}
-          >{isFileLoaded ? '파일 재선택' : '파일 선택'}</button>
-          {isFileLoaded && (
-            <button
-              type="button"
-              className="insert-file-btn"
-              onClick={handleFileInput}
-            >데이터 저장</button>
+        {isFileUploading ? (
+          <img
+
+            src={loadingSpinner} alt="loading spinner" />
+        ) : (
+            <React.Fragment>
+              <div className="file-input-btns">
+                <button
+                  type="button"
+                  className="choose-file-btn"
+                  onClick={handleOpenFileSelect}
+                >{isFileLoaded ? '파일 재선택' : '파일 선택'}</button>
+                {isFileLoaded && (
+                  <button
+                    type="button"
+                    className="insert-file-btn"
+                    onClick={handleFileInput}
+                  >데이터 저장</button>
+                )}
+              </div>
+              {isFileLoaded ? <p>현재 파일: {fileInputRef.current.files[0].name}</p> : <p>파일을 여기다 끌어 놓아주세요.</p>}
+            </React.Fragment>
           )}
-        </div>
-        {isFileLoaded ? <p>현재 파일: {fileInputRef.current.files[0].name}</p> : <p>파일을 여기다 끌어 놓아주세요.</p>}
       </div>
     </React.Fragment>
   );

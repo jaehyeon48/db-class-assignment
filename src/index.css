@@ -86,7 +86,12 @@ body {
 
 .file-input-header {
   font-size: 1.5rem;
-  margin-left: 3rem;
+  margin: 2rem 0 0 3rem;
+}
+
+.file-input-btns {
+  display: flex;
+  flex-direction: row;
 }
 
 .choose-file-btn {
@@ -98,14 +103,35 @@ body {
   align-items: center;
   font-size: 1.2rem;
   color: #000;
-  padding: 15px 24px;
+  padding: 0.3rem 0.6rem;
+  margin: 0 0.4rem;
   height: 54px;
   border-radius: 0.3rem;
   background-color: #fff;
 }
 
+.insert-file-btn {
+  cursor: pointer;
+  margin: 0;
+  outline: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #000;
+  padding: 0.3rem 0.6rem;
+  margin: 0 0.4rem;
+  height: 54px;
+  border-radius: 0.3rem;
+  background-color: #49a7be;
+}
+
 .choose-file-btn:hover {
   background-color: #e7e7e7;
+}
+
+.insert-file-btn:hover {
+  background-color: #3e90a5;
 }
 
 .file-input {

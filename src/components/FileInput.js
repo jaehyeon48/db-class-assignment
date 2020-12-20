@@ -71,7 +71,7 @@ const FileInput = () => {
 
   return (
     <React.Fragment>
-      <p className="file-input-notice">파일로 데이터 입력하기</p>
+      <p className="file-input-header">파일로 데이터 입력하기</p>
       <div
         className="file-drop-zone"
         style={applyDragStyle ? { backgroundColor: '#60768e', boxShadow: '5px 5px 23px #000' } : null}

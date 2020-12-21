@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
-import loadingSpinner from '../loading-spinner.gif';
+import inputLoadingSpinner from '../input-loading-spinner.gif';
 
 const FileInput = () => {
   const fileInputRef = useRef(null);
@@ -91,9 +91,13 @@ const FileInput = () => {
           onChange={handleFileLoadedStatus}
         />
         {isFileUploading ? (
-          <img
-
-            src={loadingSpinner} alt="loading spinner" />
+          <React.Fragment>
+            <img
+              src={inputLoadingSpinner}
+              alt="loading spinner"
+            />
+            <p>저장중...</p>
+          </React.Fragment>
         ) : (
             <React.Fragment>
               <div className="file-input-btns">

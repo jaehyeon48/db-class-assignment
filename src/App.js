@@ -6,6 +6,7 @@ import FileInput from './components/FileInput';
 import CustomerDataSearch from './components/CustomerDataSearch';
 import ProductDataSearch from './components/ProductDataSearch';
 import TransactionDataSearch from './components/TransactionDataSearch';
+import ConditionSearch from './components/ConditionSearch';
 
 const App = () => {
   return (
@@ -21,6 +22,10 @@ const App = () => {
         <CustomerDataSearch />
         <ProductDataSearch />
         <TransactionDataSearch />
+      </section>
+      <section className="condition-search-page">
+        <header className="condition-search-header">조건 검색</header>
+        <ConditionSearch />
       </section>
     </React.Fragment>
   );

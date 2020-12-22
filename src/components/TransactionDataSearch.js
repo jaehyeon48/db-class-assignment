@@ -10,7 +10,7 @@ const TransactionDataSearch = () => {
   const handleSearchAllTransactionData = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/transaction/all');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/transaction/all');
       setTransactionData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -21,7 +21,7 @@ const TransactionDataSearch = () => {
   const handleSearchAllTransactionNumber = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/transaction/number');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/transaction/number');
       setTransactionData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -32,7 +32,7 @@ const TransactionDataSearch = () => {
   const handleSearchAllProductId = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/transaction/productId');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/transaction/productId');
       setTransactionData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -43,7 +43,7 @@ const TransactionDataSearch = () => {
   const handleSearchAllTransactionPrice = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/transaction/price');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/transaction/price');
       setTransactionData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -54,7 +54,7 @@ const TransactionDataSearch = () => {
   const handleSearchAllTransactionDate = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/transaction/date');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/transaction/date');
       setTransactionData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -65,7 +65,7 @@ const TransactionDataSearch = () => {
   const handleSearchAllCustomerName = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/transaction/customerName');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/transaction/customerName');
       setTransactionData(searchRes.data);
       setIsLoading(false);
     } catch (error) {

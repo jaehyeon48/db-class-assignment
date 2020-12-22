@@ -36,7 +36,7 @@ const FileInput = () => {
         }
       };
       try {
-        await axios.post('http://localhost:5000/api/insert/by-file', postBody, config);
+        await axios.post('https://db-assignment-project.herokuapp.com/api/insert/by-file', postBody, config);
         window.alert('데이터가 성공적으로 저장되었습니다!');
         setIsFileLoaded(false);
         setIsFileUploading(false);

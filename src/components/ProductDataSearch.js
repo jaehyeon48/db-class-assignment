@@ -10,7 +10,7 @@ const ProductDataSearch = () => {
   const handleSearchAllProductData = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/product/all');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/product/all');
       setProductData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -20,7 +20,7 @@ const ProductDataSearch = () => {
   const handleSearchAllProductId = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/product/id');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/product/id');
       setProductData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -31,7 +31,7 @@ const ProductDataSearch = () => {
   const handleSearchAllSupplierName = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/product/supplier');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/product/supplier');
       setProductData(searchRes.data);
       setIsLoading(false);
     } catch (error) {

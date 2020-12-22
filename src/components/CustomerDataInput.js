@@ -28,7 +28,7 @@ const CustomerDataInput = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/insert/customer', postBody, config);
+      await axios.post('https://db-assignment-project.herokuapp.com/api/insert/customer', postBody, config);
       setName('');
       setPhone('');
       setAddress('');

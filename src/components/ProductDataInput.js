@@ -26,7 +26,7 @@ const ProductDataInput = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/insert/product', postBody, config);
+      await axios.post('https://db-assignment-project.herokuapp.com/api/insert/product', postBody, config);
       setProductName('');
       setPid('');
       setSupplierName('');

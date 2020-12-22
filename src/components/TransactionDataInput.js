@@ -30,7 +30,7 @@ const TransactionDataInput = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/insert/transaction', postBody, config);
+      await axios.post('https://db-assignment-project.herokuapp.com/api/insert/transaction', postBody, config);
       setTid('');
       setPid('');
       setPrice('');

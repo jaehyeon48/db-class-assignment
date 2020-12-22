@@ -18,7 +18,7 @@ const ConditionSearch = () => {
   const getItemsWomenBoughtMore = async () => {
     setIsIwbmLoading(true);
     try {
-      const res = await axios.get('http://localhost:5000/api/condition/iwbm');
+      const res = await axios.get('https://db-assignment-project.herokuapp.com/api/condition/iwbm');
       setItemsWomenBoughtMore(res.data);
       setIsIwbmLoading(false);
     } catch (error) {
@@ -34,7 +34,7 @@ const ConditionSearch = () => {
     }
     try {
       setIsMtLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/condition/most-transaction?mtd=${mostTransactedDate}&mtn=${mostTransactedNumber}`);
+      const res = await axios.get(`https://db-assignment-project.herokuapp.com/api/condition/most-transaction?mtd=${mostTransactedDate}&mtn=${mostTransactedNumber}`);
       setMostTransactedResult(res.data);
       setIsMtLoading(false);
     } catch (error) {
@@ -50,7 +50,7 @@ const ConditionSearch = () => {
     }
     try {
       setIsCbmmLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/condition/more-than-m?m=${cbmmNumber}`);
+      const res = await axios.get(`https://db-assignment-project.herokuapp.com/api/condition/more-than-m?m=${cbmmNumber}`);
       setMoreThanMResult([...Object.keys(res.data)].sort());
       setIsCbmmLoading(false);
     } catch (error) {

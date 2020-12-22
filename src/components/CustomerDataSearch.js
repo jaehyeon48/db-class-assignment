@@ -10,7 +10,7 @@ const CustomerDataSearch = () => {
   const handleSearchAllCustomerData = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/customer/all');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/customer/all');
       setCustomerData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -21,7 +21,7 @@ const CustomerDataSearch = () => {
   const handleSearchAllCustomerName = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/customer/name');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/customer/name');
       setCustomerData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -32,7 +32,7 @@ const CustomerDataSearch = () => {
   const handleSearchAllCustomerPhone = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/customer/phone');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/customer/phone');
       setCustomerData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -43,7 +43,7 @@ const CustomerDataSearch = () => {
   const handleSearchAllCustomerAddress = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/customer/address');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/customer/address');
       setCustomerData(searchRes.data);
       setIsLoading(false);
     } catch (error) {
@@ -54,7 +54,7 @@ const CustomerDataSearch = () => {
   const handleSearchAllCustomerGender = async () => {
     setIsLoading(true);
     try {
-      const searchRes = await axios.get('http://localhost:5000/api/search/customer/gender');
+      const searchRes = await axios.get('https://db-assignment-project.herokuapp.com/api/search/customer/gender');
       setCustomerData(searchRes.data);
       setIsLoading(false);
     } catch (error) {

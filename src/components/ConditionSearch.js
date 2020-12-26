@@ -5,14 +5,21 @@ import conditionSearchSpinner from '../condition-search-spinner.gif';
 
 const ConditionSearch = () => {
   const [itemsWomenBoughtMore, setItemsWomenBoughtMore] = useState([]);
+  // Items Women Bought More
   const [isIwbmLoading, setIsIwbmLoading] = useState(false);
   const [mostTransactedDate, setMostTransactedDate] = useState('');
   const [mostTransactedNumber, setMostTransactedNumber] = useState('');
   const [mostTransactedResult, setMostTransactedResult] = useState([]);
   const [isMtLoading, setIsMtLoading] = useState(false);
   const [moreThanMResult, setMoreThanMResult] = useState([]);
+  // Customers Bought More than M
   const [cbmmNumber, setCbmmNumber] = useState('');
   const [isCbmmLoading, setIsCbmmLoading] = useState(false);
+  const [supplierName, setSupplierName] = useState('');
+  // Customers From Supplier
+  const [cfsNumber, setCfsNumber] = useState('');
+  const [cfsResult, setCfsResult] = useState([]);
+  const [isCfsLoading, setIsCfsLoading] = useState(false);
 
 
   const getItemsWomenBoughtMore = async () => {
@@ -56,6 +63,22 @@ const ConditionSearch = () => {
     } catch (error) {
       console.log(error);
       setIsCbmmLoading(false);
+    }
+  }
+
+  const getCustomersFromSupplier = async () => {
+    if (supplierName === '' || cfsNumber === '') {
+      window.alert('검색 조건을 입력해 주세요!');
+      return;
+    }
+    try {
+      setIsCfsLoading(true);
+      const res = await axios.get(`https://db-assignment-project.herokuapp.com/api/condition/from-supplier?sup=${supplierName}&m=${cfsNumber}`);
+      setCfsResult(res.data.sort());
+      setIsCfsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsCfsLoading(false);
     }
   }
 
@@ -130,7 +153,7 @@ const ConditionSearch = () => {
           <button type="button" onClick={getCustomersBoughtMoreThanM}>검색</button>
         </form>
         <fieldset>
-          <legend>하나의 공급업자로부터 m번 이상 제품을 산 고객의 이름</legend>
+          <legend>하나의 공급업자로부터 {cbmmNumber || 'm'}번 이상 제품을 산 고객의 이름</legend>
           {isCbmmLoading ? (
             <img src={conditionSearchSpinner} alt="spinner" />
           ) : (
@@ -139,6 +162,40 @@ const ConditionSearch = () => {
                   <span
                     key={i}
                     className="cbmm-item"
+                  >{data}</span>
+                ))}
+              </React.Fragment>
+            )}
+        </fieldset>
+      </div>
+      <div className="cbmm-result">
+        <form>
+          공급업자 &nbsp;
+          <input
+            type="text"
+            className="cbmm-field"
+            value={supplierName}
+            onChange={(e) => setSupplierName(e.target.value)}
+          /> 로 부터&nbsp;
+          <input
+            type="number"
+            className="cbmm-field"
+            value={cfsNumber}
+            onChange={(e) => setCfsNumber(e.target.value)}
+          />
+          &nbsp;번 이상 제품을 산 고객의 이름&nbsp;
+          <button type="button" onClick={getCustomersFromSupplier}>검색</button>
+        </form>
+        <fieldset>
+          <legend>공급업자 {supplierName} (으)로 부터 {cfsNumber || 'm'}번 이상 제품을 산 고객의 이름</legend>
+          {isCfsLoading ? (
+            <img src={conditionSearchSpinner} alt="spinner" />
+          ) : (
+              <React.Fragment>
+                {cfsResult.map((data, i) => (
+                  <span
+                    key={i}
+                    className="cfs-item"
                   >{data}</span>
                 ))}
               </React.Fragment>
